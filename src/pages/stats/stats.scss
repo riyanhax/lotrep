@@ -1,0 +1,228 @@
+@media screen and (max-height: 568px){
+	.scroll-content {
+		overflow-y: auto !important;
+	}
+}
+page-stats {
+	ion-header {
+		ion-title {
+		  	height: 90px;
+
+		  	.toolbar-title {
+				height: 90px;
+				text-align: center !important;		    	
+		    	padding: 0 12px 0 6px !important;
+		    	
+				img {
+					position: absolute;
+					left: 0px;
+					height: 90px;
+		   			width: 100%;
+				}			
+				ion-select {
+					top: 25px;
+					margin-top: 25px;
+					float: right;
+					background: transparent;
+				    padding: 3px 13px;
+				    font-weight: 400;
+				    color: rgba(213, 213, 255, 0.92) !important;
+				    max-width: 50%;
+
+				    .select-text {
+				    	text-align: center;
+				    	font-size: 18px !important;
+		    			padding-right: 50px;
+		    			font-weight: 800;
+		    			z-index: 100;
+				    }
+				}	
+			}	
+		}
+
+		.title-ios {
+			padding: 0 12px 0 6px !important;
+		}
+
+		.toolbar-ios {
+			height: 114px !important;
+			img {
+				top: 12px;
+			}
+		}
+
+		.toolbar-title-ios {
+			margin-top: 25px;
+		}
+	}
+
+	.scroll-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		overflow: hidden;
+		padding-bottom: 0px !important;
+		margin-top: 114px;
+		align-items: center;
+
+		ion-select {
+		    color: white;		    
+		    fill: white;
+		    max-width: 100%;
+		    overflow: initial;
+		    .select-text {
+		    	text-align: center;
+		    	font-size: 2rem;
+    			font-weight: bold;
+    			color: white !important;
+    			z-index: 100;
+    			height: 25px;
+		    }
+		}	
+
+		chart {
+
+			width: 100%;
+			.highcharts-background {
+				fill: rgba(0, 0, 0, 0);
+			}
+			.highcharts-credits {
+				display: none;
+			}
+			.highcharts-tooltip {
+				color: blue !important;
+				font-size: 15px;
+			}
+		}
+		
+		.reports {
+			display: block;
+			overflow: auto !important;
+			width: 100%;
+			height: 100%;
+
+			ion-col {
+				background-color: rgba(0, 0, 0, 0.34);
+				ion-item {
+					width: 100% !important;
+	    			padding-left: 20px;
+	    			padding-right: 10px;	   
+	    			background-color: transparent !important; 			
+	    			.item-inner {
+	    				border-bottom: 0px solid !important;
+
+	    				ion-label {
+		    				color: white !important;
+		    			}
+
+		    			ion-datetime {
+		    				-webkit-box-flex: 1.5;
+						    -webkit-flex: 1.5;
+						    -ms-flex: 1.5;
+						    flex: 1.5;
+						    color: black !important;
+						    background: white;
+	    					border-radius: 3px;
+	    					height: 30px;
+	    					padding: 6px 8px 6px 16px;
+	    					-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+						    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+						    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+						    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+						    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+		    			}
+	    			}    			
+				}
+			}
+
+			.generate-col {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+				align-items: center;
+
+				.generate-btn {
+					background: url(../assets/img/partbtH.jpg) no-repeat center;
+					background-size:cover;
+					color:black;
+					width: 80px;
+					border-radius: 5px;
+					font-weight: 800;
+					height: 1.8em;
+					padding: 0px;
+				}
+			}
+
+			ion-card {
+				margin:5px;
+				width: calc(100% - 10px);
+
+				ion-card-header {
+					color: white;
+					text-align: left;
+					font-size: 2.5rem;
+				}
+
+				ion-card-content {
+					padding: 13px 3px;
+					padding-top: 0px;
+
+					.tb-header {
+						background: rgba(0, 0, 0, 0.33) !important;
+    					color: white;
+    					ion-col {
+    						span {
+    							max-width: 100%;
+    							max-height: 80px;
+								display: -webkit-box;
+							    -webkit-line-clamp: 2;
+							    -webkit-box-orient: vertical;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+    						}
+    					}
+					}
+					.tb-info {
+						font-size: 12px !important;
+						color: rgb(255, 255, 255);
+					    font-weight: 500 !important;
+					    border-top: 1px white solid;
+
+					    .domain-info {
+					    	max-width: 100%;
+					    	max-height: 25px;
+							display: -webkit-box;
+						    -webkit-line-clamp: 1;
+						    -webkit-box-orient: vertical;
+						    overflow: hidden;
+						    text-overflow: ellipsis;
+					    }
+					}
+
+					ion-list {
+						ion-item {
+							font-size: 2rem;
+							background: rgba(0, 0, 0, 0.3) !important;
+							color: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.picker-wrapper {
+	background: rgba(0, 0, 0, 0.8) !important;
+	transform: translateY(-56px) !important;
+
+	.picker-opt {
+		color: white;
+	}
+
+	.picker-toolbar {
+		background: rgba(255, 255, 255, 0.8);
+	}
+}

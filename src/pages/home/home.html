@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar color='black'>
+  	<ion-title style="padding:0;" class="">
+  		<img src="./assets/img/newlogo.jpg">
+  		<ion-buttons right margin-right >
+	  		<button ion-button icon-only (click)="logout()">
+	          	<ion-icon ios="md-log-out" md="md-log-out"></ion-icon>
+	        </button>
+      	</ion-buttons>
+	</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+	<ion-item>
+	  	<ion-label>Choose Your Location</ion-label>
+		<ion-select [(ngModel)]="currentLocationID"  (ionChange) = "getLocation()">
+	    	<ion-option *ngFor="let location of locations" [value]="location.id">{{location.name}}</ion-option>
+	 	</ion-select>
+	</ion-item>
+
+	<ion-grid>
+	  <ion-row>
+	    <ion-col col-6>
+	    	<ion-card class="card_img1" (click)="presentDomainModal()">
+	          	<ion-card-header>
+	          		AVERAGE<br>
+	          		OVERALL<br>
+	          		RATING
+	          	</ion-card-header>
+	          	<ion-card-content>
+	          		<div class="big-font">
+	            		{{currentLocation.average_overall_rating}}
+	            	</div>
+	          	</ion-card-content>
+	        </ion-card>
+	    </ion-col>
+	    <ion-col col-6>
+	    	<ion-card class="card_img2" (click)="gotoReviewsFeed()">
+	          	<ion-card-header>
+	            	REVIEWS FOR<br>
+	          		CURRENT<br>
+	          		MONTH
+	          	</ion-card-header>
+	          	<ion-card-content>
+	            	<div class="big-font">
+	            		{{currentLocation.reviews_for_current_month}}
+	            	</div>
+	          	</ion-card-content>
+	        </ion-card>
+	    </ion-col>
+	  </ion-row>
+	  <ion-row>
+	    <ion-col col-6>
+	    	<ion-card class="card_img3">
+	          	<ion-card-header>
+	          		TRENDING
+	          	</ion-card-header>
+	          	<ion-card-content>
+	          		<div class="trend_icon">
+	          			<ion-icon [hidden]="trending_state!=1" style="color:green;" name="md-arrow-round-up"></ion-icon>
+	          			<ion-icon [hidden]="trending_state!=-1" style="color:red" name="md-arrow-round-down"></ion-icon>
+	          			<ion-icon [hidden]="trending_state!=0" style="color:yellow" name="ios-remove-circle-outline"></ion-icon>
+	          		</div>
+	          	</ion-card-content>
+	        </ion-card>
+	    </ion-col>
+	    <ion-col col-6>
+	    	<ion-card class="card_img4">
+	          	<ion-card-header>
+	          		BBB: 
+	          		<i style="color:white !important">
+	          			{{currentLocation.last_bbb_report}}
+	          		</i>
+	          	</ion-card-header>
+	          	<ion-card-content>
+	          		<div class="new-message">
+	          			<i [hidden]="!newMessageFound" style="color:red" (click)="toNewReviews()">New Message Found</i>
+	          			<i [hidden]="newMessageFound" style="color:white">No Message Found</i>
+	          		</div>
+	          		<div class="message-text">
+                    	RIPOFFREPORT 
+                    </div>
+                    <div class="message-status">
+                    	STATUS: 
+                    	<i [hidden]="!newMessageFound" style="color:red">Alert</i>
+                    	<i [hidden]="newMessageFound" style="color:green">Good</i>
+        			</div>
+	          	</ion-card-content>
+	        </ion-card>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+</ion-content>

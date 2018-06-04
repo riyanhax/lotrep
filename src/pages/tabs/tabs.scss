@@ -1,0 +1,91 @@
+page-tabs {
+	.ion-ios-reviews_feed-outline, .ion-ios-reviews_feed {
+		background: url('../assets/img/feed.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 30px !important; 
+    	height: 30px !important;
+    	content:""; 
+	} 
+
+	.ion-md-reviews_feed,.ion-md-reviews_feed-outline {
+	  	background: url('../assets/img/feed.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 24px !important; 
+    	height: 24px !important;
+    	content:""; 
+	}
+
+	.ion-ios-review_requester-outline, .ion-ios-review_requester {
+		background: url('../assets/img/review-requester.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 30px !important; 
+    	height: 30px !important;
+    	content:""; 
+	} 
+	
+	.ion-md-review_requester,.ion-md-review_requester-outline {
+	  	background: url('../assets/img/review-requester.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 24px !important; 
+    	height: 24px !important;
+    	content:""; 
+	}
+
+	.ion-ios-contact_support-outline, .ion-ios-contact_support {
+		background: url('../assets/img/support.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 30px !important; 
+    	height: 30px !important;
+    	content:""; 
+	} 
+	
+	.ion-md-contact_support,.ion-md-contact_support-outline {
+	  	background: url('../assets/img/support.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 24px !important; 
+    	height: 24px !important;
+    	content:""; 
+	}
+
+	.ion-ios-cus_home-outline, .ion-ios-cus_home {
+		background: url('../assets/img/home.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 30px !important; 
+    	height: 30px !important;
+    	content:""; 
+	} 
+	
+	.ion-md-cus_home,.ion-md-cus_home-outline {
+	  	background: url('../assets/img/home.png') no-repeat 0 0;
+    	background-size: 100%;
+    	display: inline-block;
+    	width: 24px !important; 
+    	height: 24px !important;
+    	content:""; 
+	}
+
+    .ion-md-stats,.ion-md-stats-outline {
+        background: url('../assets/img/stats.png') no-repeat 0 0;
+        background-size: 100%;
+        display: inline-block;
+        width: 24px !important; 
+        height: 24px !important;
+        content:""; 
+    }
+
+    .ion-ios-stats-outline, .ion-ios-stats {
+        background: url('../assets/img/stats.png') no-repeat 0 0;
+        background-size: 100%;
+        display: inline-block;
+        width: 30px !important; 
+        height: 30px !important;
+        content:""; 
+    } 
+}

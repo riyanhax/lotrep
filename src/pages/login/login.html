@@ -1,0 +1,38 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color='black'>
+  	<ion-title style="padding:0;" class="">
+  		<img src="./assets/img/newlogo.jpg">
+	</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+	<div style="overflow: auto;">
+		<ion-card>
+			<ion-card-header>
+				Login Form
+			</ion-card-header>
+			<ion-card-content>
+				<ion-list no-line>
+					<ion-item>
+						<ion-input type="text" placeholder="Email"  [(ngModel)]="credentials.email" >
+						</ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password" >
+						</ion-input>
+					</ion-item>
+					<button ion-button block outline color="dark" (click)="login()">
+						Log in
+					</button>
+				</ion-list>
+			</ion-card-content>
+		</ion-card>
+	</div>
+</ion-content>

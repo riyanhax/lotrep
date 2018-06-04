@@ -1,0 +1,77 @@
+<!--
+  Generated template for the ReviewRequester page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar color='black'>
+		<ion-title>
+			<img src="./assets/img/newlogo.jpg">
+	  		<span> Review Requester </span>
+	  		<ion-item>
+			  	<ion-label>Choose your request method</ion-label>
+				<ion-select [(ngModel)]="request_method" (ionChange) = "change_request_method()">
+			    	<ion-option value="email">Email</ion-option>
+			    	<ion-option value="sms">SMS</ion-option>
+			 	</ion-select>
+			</ion-item>
+		</ion-title>		
+  	</ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+	<div class="card-wrapper">
+		<ion-card>
+			<ion-card-header>
+				To:
+			</ion-card-header>
+			<ion-card-content>
+				<ion-input [placeholder]="placeholder" [(ngModel)]="recipients"></ion-input>
+			</ion-card-content>
+		</ion-card>
+		<ion-card [hidden]="request_method=='sms'">
+			<ion-card-header>
+				From:
+			</ion-card-header>
+			<ion-card-content>
+				<ion-input placeholder="Please enter your email" [(ngModel)]="own_email"></ion-input>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header>
+				Company:
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+				  	<ion-label>Choose company</ion-label>
+					<ion-select [(ngModel)]="locationID" (ionChange) = "change_Template()">
+				    	<ion-option *ngFor="let location of locations" [value]="location.id">{{location.name}}</ion-option>
+				 	</ion-select>
+				 </ion-item>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header>
+				Template:
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+				  	<ion-label>Choose template</ion-label>
+					<ion-select [(ngModel)]="templateID" (ionChange) = "change_Template()">
+				    	<ion-option *ngFor="let template of templates" [value]="template.id">{{template.subject}}</ion-option>
+				 	</ion-select>
+				</ion-item>
+			</ion-card-content>
+		</ion-card>
+		<ion-card>
+			<ion-card-header>
+				{{contentLabel}}:
+			</ion-card-header>
+			<ion-card-content>
+				<textarea [(ngModel)]="content"></textarea>
+			</ion-card-content>
+		</ion-card>
+		<button [disabled]="isSending" class="send-btn" ion-button (click)="sendMessage()">Send</button>
+	</div>
+</ion-content>

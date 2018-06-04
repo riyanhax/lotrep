@@ -1,0 +1,150 @@
+<ion-content class="background">
+	<div class="navHeader" [hidden]="(cur_view_feed_id!=-1)">
+		<ion-searchbar
+		  [(ngModel)]="search_keyword"
+		  [showCancelButton]="shouldShowCancel"
+		  (search)="getFeeds(true)">
+		</ion-searchbar>
+		<div class="pagination-bar">
+			<button class="flex-2 font-white back-dark first-page" (click)="go_to_page(1)">
+				&lt;&lt;
+			</button>
+			<button class="flex-1 font-white back-light" (click)="go_to_page(cur_page_num-1)">
+				&lt;
+			</button>
+			<button class="flex-2 page font-black">
+				{{cur_page_num}}
+			</button>
+			<button class="flex-1 font-white back-light" (click)="go_to_page(cur_page_num+1)">
+				&gt;
+			</button>
+			<button class="flex-2 font-white back-dark last-page" (click)="go_to_page(page_count)">
+				&gt;&gt;
+			</button>
+		</div>
+	</div>
+	<ion-fab [hidden]="(cur_view_feed_id!=-1)" bottom left edge style="bottom: 120px;">
+	    <button ion-fab mini color="light" ><ion-icon name="md-search"></ion-icon></button>
+	    <ion-fab-list>
+	      	<select (change)="getFeeds(true)" class="source-search" [(ngModel)]="source_id">   <!-- will add event -->
+	      		<option value="-1" selected="selected">All</option>
+		      	<option *ngFor="let source of location.extendedStats" [value] = "source.review_site_id">
+		      	{{source.domain}}
+		      	</option>
+	      	</select>
+	      	<select (change)="getFeeds(true)" class="rating-search" [(ngModel)]="rating" >  <!-- will add event -->
+	      		<option value="-1" selected="selected">All</option>
+		      	<option value="1">1</option>
+		      	<option value="2">2</option>
+		      	<option value="3">3</option>
+		      	<option value="4">4</option>
+		      	<option value="5">5</option>
+	      	</select>
+	    </ion-fab-list>
+	</ion-fab>
+
+	<ion-slides (ionSlidePrevEnd)="ionSlidePrevEnd($event)">
+		<ion-slide class="main-slide">
+			<ion-card *ngFor="let feed of feeds">
+				<ion-card-header (click)="viewFeed(feed.review_id)">
+					<span>
+						{{feed.profile_name}}
+					</span>
+					<img src="http://www.lotrep.com/uploads/websites/{{feed.icon}}">
+				</ion-card-header>
+				<ion-card-content (click)="viewFeed(feed.review_id)">
+					<div class="feed-author">
+						{{feed.author_name}} on {{feed.domain}}:
+					</div>
+					<ion-icon name="quote" class="start-quote" [hidden]="feed.text == null || feed.text == ''"></ion-icon>
+					<span [hidden]="feed.text == null || feed.text == ''">
+						{{feed.text}}
+					</span>
+					<span [hidden]="feed.text != null && feed.text != ''">		
+						No Context
+					</span>
+					<ion-icon name="quote" class="end-quote" [hidden]="feed.text == null || feed.text == ''"></ion-icon>
+				</ion-card-content>
+				<div class="card-footer">
+					<span class="review-date">
+						{{feed.review_date}}			
+					</span>
+					<span (click)="responseFeedUsingPrompt(feed.review_id)" [hidden]="!feed.response_available"><ion-icon name="ios-chatbubbles"></ion-icon> Reply</span>
+					<span [hidden]="!feed.has_response || feed.response_available"> <ion-icon name="ios-chatbubbles"></ion-icon> Replied</span>
+					<span [hidden]="feed.has_response || feed.response_available"> <ion-icon name="md-calendar"></ion-icon> Expired</span>
+					<div class="review-rating">
+						<span>
+							<ion-icon [hidden]="(feed.rating < 1)" name="ios-star"></ion-icon>
+							<ion-icon [hidden]="(feed.rating >= 1)" name="ios-star-outline"></ion-icon>
+							<ion-icon [hidden]="(feed.rating < 2)" name="ios-star"></ion-icon>
+							<ion-icon [hidden]="(feed.rating >= 2)" name="ios-star-outline"></ion-icon>
+							<ion-icon [hidden]="(feed.rating < 3)" name="ios-star"></ion-icon>
+							<ion-icon [hidden]="(feed.rating >= 3)" name="ios-star-outline"></ion-icon>
+							<ion-icon [hidden]="(feed.rating < 4)" name="ios-star"></ion-icon>
+							<ion-icon [hidden]="(feed.rating >= 4)" name="ios-star-outline"></ion-icon>
+							<ion-icon [hidden]="(feed.rating < 5)" name="ios-star"></ion-icon>
+							<ion-icon [hidden]="(feed.rating >= 5)" name="ios-star-outline"></ion-icon>
+						</span>
+					</div>
+				</div>
+			</ion-card>
+		</ion-slide>
+		<ion-slide class="detail-slide">
+			<div [hidden]="(cur_view_feed_id==-1)">
+				<ion-card>
+					<ion-card-header>
+						<span>
+							{{cur_feed_review.profile_name}}
+						</span>
+						<img src="http://www.lotrep.com{{cur_feed_review.icon}}">
+					</ion-card-header>
+					<ion-card-content>
+						<div class="feed-author">
+							{{cur_feed_review.author_name}} on {{cur_feed_review.domain}}:
+						</div>
+						<ion-icon name="quote" class="start-quote" [hidden]="cur_feed_review.text == null || cur_feed_review.text == ''"></ion-icon>
+						<span [hidden]="cur_feed_review.text == null || cur_feed_review.text == ''">
+							{{cur_feed_review.text}}			
+						</span>
+						<span [hidden]="cur_feed_review.text != null && cur_feed_review.text != ''">
+							No Context
+						</span>
+						<ion-icon name="quote" class="end-quote" [hidden]="cur_feed_review.text == null || cur_feed_review.text == ''"></ion-icon>
+					</ion-card-content>
+					<div class="card-footer">
+						<span class="review-date">
+							{{cur_feed_review.review_date}}			
+						</span>
+						<span class="review-domain">
+							{{cur_feed_review.domain}}		
+						</span>			
+						<div class="review-rating">
+							<span>
+								<ion-icon [hidden]="(cur_feed_review.rating < 1)" name="ios-star"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating >= 1)" name="ios-star-outline"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating < 2)" name="ios-star"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating >= 2)" name="ios-star-outline"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating < 3)" name="ios-star"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating >= 3)" name="ios-star-outline"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating < 4)" name="ios-star"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating >= 4)" name="ios-star-outline"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating < 5)" name="ios-star"></ion-icon>
+								<ion-icon [hidden]="(cur_feed_review.rating >= 5)" name="ios-star-outline"></ion-icon>
+							</span>
+						</div>
+					</div>
+				</ion-card>
+				<ion-card>
+					<ion-card-header class="response-header">
+						{{response_title}}
+					</ion-card-header>
+					<ion-card-content>
+						<span [hidden]="cur_feed_review.response_available">{{reason_response}}</span>
+						<textarea [hidden]="!cur_feed_review.response_available"  placeholder="Type Your Message" [(ngModel)]="response_text"></textarea>
+						<button [disabled]="isReplying" [hidden]="!cur_feed_review.response_available" (click)="responseFeed(cur_feed_review.review_id)">Send</button>
+					</ion-card-content>
+				</ion-card>
+			</div>
+		</ion-slide>
+	</ion-slides>
+</ion-content>

@@ -1,0 +1,83 @@
+page-login {
+	ion-navbar {		
+		ion-title {
+			height: 90px !important;
+			.toolbar-title {
+				height: 90px;
+				img {
+					position: absolute;
+					left: 0px;
+					height: 90px;
+		   			width: 100%;
+				}
+
+				ion-buttons {
+					margin-top: 30px;
+				}
+			}		
+		}
+	}
+
+	.toolbar-ios {
+		height: 90px !important;
+	}	
+
+	.scroll-content {
+		margin-top: 90px;
+		align-content: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		overflow: hidden !important;
+		padding-bottom: 0px !important;
+	}
+
+	ion-card.card {
+		box-shadow: none;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 5px;
+	}
+
+	a, p, ion-card-header.card-header {
+		color: #fff !important;
+	}
+
+	.list > .item-block:first-child {
+		border: medium none;
+	}
+
+	.item {
+		margin-bottom: 20px;
+		background: rgba(255, 255, 255, 0.3);
+		border: medium none;
+		color: #fff;
+
+		*:-moz-placeholder {
+			color: #d5d5d5 !important;
+		}
+
+		*:-ms-input-placeholder {
+			color: #d5d5d5 !important;
+		}
+
+		*::-webkit-input-placeholder {
+			color: #d5d5d5 !important;
+		}
+
+		input::-moz-placeholder {
+			color: #d5d5d5 !important;
+		}
+
+		input:-moz-placeholder {
+			color: #d5d5d5 !important;
+		}
+	}
+	
+	ion-card-content {
+		button {
+			background: rgba(0, 0, 0, 0.8);
+			color: white !important;
+		}
+	}
+}

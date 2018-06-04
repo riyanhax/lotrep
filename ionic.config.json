@@ -1,0 +1,12 @@
+{
+  "name": "LotRep.com",
+  "app_id": "b9d26ff3",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/api/v1",
+      "proxyUrl": "https://www.lotrep.com/api/v1"
+    }
+  ]
+}
